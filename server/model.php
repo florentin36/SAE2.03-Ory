@@ -31,4 +31,5 @@ function getAllMovies(){
     // Récupère les résultats de la requête sous forme d'objets
     $res = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $res; // Retourne les résultats
+    echo $res;
 }
