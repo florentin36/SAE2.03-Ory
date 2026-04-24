@@ -8,14 +8,31 @@
   </head>
   <body>
     <section id="log"></section>
+    <section id="form"></section>
 
     <script type="module">
+      import { DataMovie } from "./data/dataMovie.js";
+
       import { Log } from "./component/Log/script.js";
+      import { MovieForm } from "./component/MovieForm/script.js";
 
       window.C = {};
 
+      C.handlerAjout = async function(){
+            
+          let form = document.querySelector('.MovieForm__formulaire');
+          
+          //pour pas que ca s'actualise quan je clique sur le bouton poir ajouter
+          form.addEventListener("submit", function(e) {e.preventDefault();});
+
+          let fd = new FormData(form);
+          let res = await DataMovie.ajout(fd);
+          V.renderLog(res);
+      }
+
       C.start = function () {
         V.renderLog("Démarrage de l'application");
+        V.renderMovieForm("C.handlerAjout()");
       };
 
       window.V = {};
@@ -23,6 +40,11 @@
       V.renderLog = function (txt) {
         let content = document.querySelector("#log");
         content.innerHTML = Log.format(txt);
+      };
+
+      V.renderMovieForm = function (handler) {
+        let content = document.querySelector("#form");
+        content.innerHTML = MovieForm.format(handler);
       };
 
       C.start();

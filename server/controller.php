@@ -21,7 +21,36 @@
 require("model.php");
 
 
+function ajoutController(){
+
+    $titre = $_POST['titre'];
+    $realisateur = $_POST['realisateur'];
+    $annee = $_POST['date'];
+    $duree = $_POST['duree'];
+    $synopsis = $_POST['synopsis'];
+    $categorie = $_POST['categorie'];
+    $image = $_POST['image'];
+    $trailer = $_POST['trailer'];
+    $age = $_POST['age'];
+
+    // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
+    $ok = ajoutFilm($titre,$realisateur,$annee,$duree,$synopsis,$categorie,$image,$trailer,$age);
+    // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
+    if ($ok!=0){
+        return "Le film $titre à été ajouter à la base de donné";
+    }
+    else{
+        return false;
+    }
+}
+
+
 function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
+}
+
+function readFullMovieController(){
+    $fullMovie = getFullMovie();
+    return $fullMovie;
 }

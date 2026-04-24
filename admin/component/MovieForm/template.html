@@ -1,0 +1,57 @@
+<div class="MovieForm font-sans">
+    <h2 class="MovieForm__title">Ajouter un film</h2>
+    <form class="MovieForm__formulaire" method="post">
+        <div class="MovieForm__item">
+            <label for="titre">Titre du film :</label>
+            <input class="MovieForm__champ" type="text" name="titre" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="realisateur">Réalisateur du film :</label>
+            <input class="MovieForm__champ" type="text" name="realisateur" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="date">Année de sortie du film :</label>
+            <input class="MovieForm__champ" type="number" name="date" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="duree">Durée du film (minute):</label>
+            <input class="MovieForm__champ" type="number" name="duree" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="synopsis">Synopsis du film :</label>
+            <input class="MovieForm__champ" type="textarea" name="synopsis" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="categorie">Categorie du film :</label>
+            <select class="MovieForm__champ" name="categorie" required>
+                <option value=1>Comédie</option>
+                <option value=2>Action</option>
+                <option value=3>Aventure</option>
+                <option value="4">Science-fiction</option>
+            </select>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="image">Nom du fichier image :</label>
+            <input class="MovieForm__champ" type="text" name="image" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="trailer">URL du trailer :</label>
+            <input class="MovieForm__champ" type="url" name="trailer" required>
+        </div>
+
+        <div class="MovieForm__item">
+            <label for="age">Restriction d'age :</label>
+            <input class="MovieForm__champ" type="number" name="age" required>
+        </div>
+
+
+        <input onclick="{{handler}}" type="submit" value="AJOUTER" name="todo">
+    </form>
+</div>

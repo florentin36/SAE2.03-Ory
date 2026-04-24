@@ -15,6 +15,7 @@
     <script type="module">
       import { NavBar } from "./component/NavBar/script.js";
       import { ListeFilms } from "./component/ListeFilms/script.js";
+      import { MovieDetail } from "./component/MovieDetail/script.js";
 
       import { DataMovie } from "./data/dataMovie.js";
       
@@ -35,6 +36,7 @@
 
         V.renderNavBar("C.handlerAbout()");
         V.renderListeFilms(data);
+        V.renderMovieDetail();
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -54,7 +56,12 @@
 
       V.renderListeFilms = function (data) {
         let content = document.querySelector("#content");
-        content.innerHTML = ListeFilms.formatMany(data);
+        content.innerHTML += ListeFilms.formatMany(data);
+      }
+
+      V.renderMovieDetail = function (data) {
+        let content = document.querySelector("#content");
+        content.innerHTML += MovieDetail.format();
       }
 
       C.start(); // Démarre l'application
