@@ -50,7 +50,7 @@ function readMoviesController(){
     return $movies;
 }
 
-function readFullMovieController(){
-    $fullMovie = getFullMovie();
+function readFullMovieController($id){
+    $fullMovie = getFullMovie($id);
     return $fullMovie;
 }

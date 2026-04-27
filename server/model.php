@@ -38,7 +38,7 @@ function getFullMovie($id){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select id, name, length, director, year, description, id_category, trailer, min_age image from Movie where id = $id";
+    $sql = "select id, name, length, director, year, description, id_category, trailer, min_age, image from Movie where id = $id";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Exécute la requête SQL

@@ -62,7 +62,7 @@ if ( isset($_REQUEST['todo']) ){
     case "readFullMovie":
       if ( isset($_REQUEST["id"])){
         $id = $_REQUEST["id"];
-        $data = readFullMovie($id);
+        $data = readFullMovieController($id);
         break;
       }
       

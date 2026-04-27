@@ -33,10 +33,10 @@
 
       C.start = async function () {
         let data = await DataMovie.requestMovies();
+        
 
         V.renderNavBar("C.handlerAbout()");
         V.renderListeFilms(data);
-        V.renderMovieDetail();
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -59,9 +59,10 @@
         content.innerHTML += ListeFilms.formatMany(data);
       }
 
-      V.renderMovieDetail = function (data) {
+      V.renderMovieDetail = async function (id) {
+        let data = await DataMovie.requestFullMovie(id);
         let content = document.querySelector("#content");
-        content.innerHTML += MovieDetail.format();
+        content.innerHTML = MovieDetail.format(data);
       }
 
       C.start(); // Démarre l'application
