@@ -50,6 +50,17 @@ function readMoviesController(){
     return $movies;
 }
 
+function readmoviescategoryController(){
+    $movies = getMoviesCategory();
+    return $movies;
+}
+
+
+function readcategoryController(){
+    $categ = getcategory();
+    return $categ;
+}
+
 function readFullMovieController($id){
     $fullMovie = getFullMovie($id);
     return $fullMovie;

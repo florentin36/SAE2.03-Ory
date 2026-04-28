@@ -1,0 +1,20 @@
+.MovieCategory{
+    margin: 1rem;
+    .MovieCategory__liste{
+        display: flex;
+        flex-direction: column;
+        .MovieCategory__item{
+            display: flex;
+            .MovieCategory__nom{
+                width: 50rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1rem;
+            }
+            .liste__image{
+                width: 8rem;
+            }
+        }
+    }
+}

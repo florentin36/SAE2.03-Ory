@@ -16,8 +16,11 @@
       import { NavBar } from "./component/NavBar/script.js";
       import { ListeFilms } from "./component/ListeFilms/script.js";
       import { MovieDetail } from "./component/MovieDetail/script.js";
+      import { MovieCategory } from "./component/MovieCategory/script.js";
 
       import { DataMovie } from "./data/dataMovie.js";
+      import { DataNav } from "./data/dataNav.js";
+      import { DataCategory } from "./data/dataCategory.js";
       
 
       // Controleur
@@ -25,18 +28,13 @@
       // Une fois l'application terminée, on pourrait remettre let C.
       window.C = {};
 
-      C.handlerAbout = function () {
-        alert(
-          "Ceci est une base de projet pour la SAE2.03 édition 2025. Bonne chance !"
-        );
-      };
-
       C.start = async function () {
         let data = await DataMovie.requestMovies();
         
 
-        V.renderNavBar("C.handlerAbout()");
+        V.renderNavBar(DataNav);
         V.renderListeFilms(data);
+        V.renderMovieCategory();
       };
 
       // Vue (contient tout ce qui est relatif à l'affichage)
@@ -49,9 +47,9 @@
        * Elle sélectionne l'élément HTML avec l'ID "header" et y insère le contenu
        * formaté par le composant NavBar.
        */
-      V.renderNavBar = function (hAbout) {
+      V.renderNavBar = function (data) {
         let header = document.querySelector("#header");
-        header.innerHTML = NavBar.format(hAbout);
+        header.innerHTML = NavBar.formatMany(data);
       };
 
       V.renderListeFilms = function (data) {
@@ -63,6 +61,17 @@
         let data = await DataMovie.requestFullMovie(id);
         let content = document.querySelector("#content");
         content.innerHTML = MovieDetail.format(data);
+      }
+
+      V.renderMovieCategory = async function () {
+        let data = await DataCategory.requestCategory();
+        let datafilm = await DataMovie.requestMovies();
+        let content = document.querySelector("#content");
+        content.innerHTML += MovieCategory.formatMany(data);
+        for (let c in data){
+          let position = document.querySelector(".listeCateg"+data[c].id);
+          position.innerHTML = ListeFilms.formatMany(datafilm);
+        }
       }
 
       C.start(); // Démarre l'application
