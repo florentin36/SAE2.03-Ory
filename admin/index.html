@@ -15,6 +15,7 @@
 
       import { Log } from "./component/Log/script.js";
       import { MovieForm } from "./component/MovieForm/script.js";
+      import { ProfilsForm } from "./component/ProfilsForm/script.js";
 
       window.C = {};
 
@@ -30,11 +31,21 @@
           V.renderLog(res);
       }
 
+      C.handlerAjoutProfil = async function(){
+          let form = document.querySelector('.ProfilsForm__formulaire');
+          //pour pas que ca s'actualise quan je clique sur le bouton poir ajouter
+          form.addEventListener("submit", function(e) {e.preventDefault();});
+          let fd = new FormData(form);
+          let res = await DataMovie.ajoutProfil(fd);
+          V.renderLog(res);
+      }
+
       C.start = async function () {
         let data = await DataMovie.requestCategory();
 
         V.renderLog("Démarrage de l'application");
         V.renderMovieForm("C.handlerAjout()",data);
+        V.renderProfilsForm("C.handlerAjoutProfil()");
       };
 
       window.V = {};
@@ -46,7 +57,12 @@
 
       V.renderMovieForm = function (handler,data) {
         let content = document.querySelector("#form");
-        content.innerHTML = MovieForm.formatMany(handler,data);
+        content.innerHTML += MovieForm.formatMany(handler,data);
+      };
+
+      V.renderProfilsForm = function (handler) {
+        let content = document.querySelector("#form");
+        content.innerHTML += ProfilsForm.format(handler);
       };
 
       C.start();

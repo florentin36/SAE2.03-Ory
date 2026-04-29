@@ -1,13 +1,11 @@
 let DataNav = [
     {
         "texte" : "Home",
-        "action" : "",
-        "lien" : ""
+        "action" : "C.loadHome()"
     },
     {
         "texte" : "Profil",
-        "action" : "",
-        "lien" : ""
+        "action" : "C.loadProfils()"
     },
 
 ]

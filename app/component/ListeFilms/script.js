@@ -11,7 +11,7 @@ ListeFilms.format = function(film){
     let html= templateLi;
     html = html.replace('{{nomFilm}}', film.name);
     html = html.replace("{{imageFilm}}", film.image);
-    html = html.replace("{{handler}}", "V.renderMovieDetail("+film.id+");");
+    html = html.replace("{{handler}}", "C.loadDetail("+film.id+")");
     return html;
 }
 

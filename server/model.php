@@ -33,12 +33,47 @@ function getAllMovies(){
     return $res; // Retourne les résultats
     echo $res;
 }
-//----------------------------------------------------ici
-function getMoviesCategory(){
+
+function getAllProfils(){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "select id, nom, image, age from Profils";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+    echo $res;
+}
+
+function getprofilID($id){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    $sql = "select id, nom, image, age from Profils WHERE id = $id";
+    $stmt = $cnx->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res;
+    echo $res;
+}
+
+function getMoviesCategory($categ){
     // Connexion à la base de données
     $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
     // Requête SQL pour récupérer le menu avec des paramètres
-    $sql = "select id, name, image from Movie";
+    $sql = "select id, name, image from Movie WHERE id_category = $categ";
+    // Prépare la requête SQL
+    $stmt = $cnx->prepare($sql);
+    // Exécute la requête SQL
+    $stmt->execute();
+    // Récupère les résultats de la requête sous forme d'objets
+    $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $res; // Retourne les résultats
+    echo $res;
+}
+
+function getcategoryExist(){
+    // Connexion à la base de données
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD);
+    // Requête SQL pour récupérer le menu avec des paramètres
+    $sql = "select DISTINCT C.id, C.name from Category as C RIGHT JOIN Movie as M ON C.id = M.id_category";
     // Prépare la requête SQL
     $stmt = $cnx->prepare($sql);
     // Exécute la requête SQL
@@ -63,6 +98,8 @@ function getcategory(){
     return $res; // Retourne les résultats
     echo $res;
 }
+
+
 
 function getFullMovie($id){
     // Connexion à la base de données
@@ -102,4 +139,17 @@ function ajoutFilm($titre,$realisateur,$annee,$duree,$synopsis,$categorie,$image
     // Récupère le nombre de lignes affectées par la requête
     $res = $stmt->rowCount(); 
     return $res; // Retourne le nombre de lignes affectées
+}
+
+function ajoutProfil($nom,$image,$age){
+    $cnx = new PDO("mysql:host=".HOST.";dbname=".DBNAME, DBLOGIN, DBPWD); 
+    $sql = "INSERT INTO Profils (nom, image, age) 
+            VALUES (:nom, :image, :age)";
+    $stmt = $cnx->prepare($sql);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':image', $image);
+    $stmt->bindParam(':age', $age);
+    $stmt->execute();
+    $res = $stmt->rowCount(); 
+    return $res;
 }

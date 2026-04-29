@@ -1,0 +1,22 @@
+<div class="ProfilsForm font-sans">
+    <h2 class="ProfilsForm__title">Ajouter un profil</h2>
+    <form class="ProfilsForm__formulaire" method="post">
+        <div class="ProfilsForm__item">
+            <label for="nom">Nom du profil :</label>
+            <input class="ProfilsForm__champ" type="text" name="nom" required>
+        </div>
+
+        <div class="ProfilsForm__item">
+            <label for="image">Nom du fichier de la photo de profil :</label>
+            <input class="ProfilsForm__champ" type="text" name="image" required>
+        </div>
+
+        <div class="ProfilsForm__item">
+            <label for="age">Age :</label>
+            <input class="ProfilsForm__champ" type="number" name="age" required>
+        </div>
+
+
+        <input onclick="{{handler}}" type="submit" value="AJOUTER" name="todo">
+    </form>
+</div>

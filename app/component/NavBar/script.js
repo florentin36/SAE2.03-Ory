@@ -10,11 +10,10 @@ NavBar.format = function(data){
     let html= templateLi;
     html = html.replace('{{texte}}', data.texte);
     html = html.replace('{{action}}', data.action);
-    html = html.replace('{{lien}}', data.lien);
     return html;
 }
 
-NavBar.formatMany = function(data){
+NavBar.formatMany = function(data,dataP){
     let html = template;
 
     let liste = "";
@@ -23,6 +22,7 @@ NavBar.formatMany = function(data){
     }
 
     html = html.replace("{{navList}}", liste);
+    html = html.replace("{{image}}", dataP.image);
     return html;
 }
 

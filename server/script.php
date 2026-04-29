@@ -59,6 +59,10 @@ if ( isset($_REQUEST['todo']) ){
       $data = readMoviesController();
       break;
 
+    case 'readprofils':
+      $data = readProfilsController();
+      break;
+
     case "readFullMovie":
       if ( isset($_REQUEST["id"])){
         $id = $_REQUEST["id"];
@@ -70,12 +74,32 @@ if ( isset($_REQUEST['todo']) ){
       $data = readcategoryController();
       break;
 
-    case "readmoviescategory" :
-      $data = readcategoryController();
+    case "readprofilID" :
+      if (isset($_REQUEST["id"])){
+        $id = $_REQUEST["id"];
+        $data = readprofilIDController($id);
+        break;
+      }
+      
+
+    case "readcategoryexist" :
+      $data = readcategoryexistController();
       break;
+
+    case "readmoviescategory" :
+      if (isset($_REQUEST["categ"])){
+        $categ = $_REQUEST["categ"];
+        $data = readmoviescategoryController($categ);
+        break;
+      }
+      
 
     case "ajout" :
       $data = ajoutController();
+      break;
+
+    case "ajoutprofil" :
+      $data = ajoutProfilController();
       break;
 
 

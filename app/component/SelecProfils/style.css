@@ -1,0 +1,25 @@
+.SelecProfils{
+    margin: 1rem;
+    .SelecProfils__liste{
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        .SelecProfils__item{
+            padding: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 0 10px var(--color-gray-light);
+            font-size: 2rem;
+            .SelecProfils__imageContainer{
+                width: 10rem;
+                height: 10rem;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 0 10px var(--color-gray-light);
+                .SelecProfils__image{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+}

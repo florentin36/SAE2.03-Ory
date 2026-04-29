@@ -42,4 +42,14 @@ DataMovie.ajout = async function (fdata) {
     return data;
 }
 
+DataMovie.ajoutProfil = async function (fdata) {
+    let config = {
+        method: "POST",
+        body: fdata
+    };
+    let answer = await fetch(HOST_URL + "/server/script.php?todo=ajoutprofil", config);
+    let data = await answer.json();
+    return data;
+}
+
 export {DataMovie};

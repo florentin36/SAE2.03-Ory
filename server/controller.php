@@ -44,20 +44,49 @@ function ajoutController(){
     }
 }
 
+function ajoutProfilController(){
+
+    $nom = $_POST['nom'];
+    $image = $_POST['image'];
+    $age = $_POST['age'];
+    // Mise à jour du menu à l'aide de la fonction updateMenu décrite dans model.php
+    $ok = ajoutProfil($nom,$image,$age);
+    // $ok est le nombre de ligne affecté par l'opération de mise à jour dans la BDD (voir model.php)
+    if ($ok!=0){
+        return "Le profil $nom à été ajouter à la base de donné";
+    }
+    else{
+        return false;
+    }
+}
+
+function readProfilsController(){
+    $profils = getAllProfils();
+    return $profils;
+}
 
 function readMoviesController(){
     $movies = getAllMovies();
     return $movies;
 }
 
-function readmoviescategoryController(){
-    $movies = getMoviesCategory();
+function readmoviescategoryController($categ){
+    $movies = getMoviesCategory($categ);
     return $movies;
 }
 
+function readprofilIDController($id){
+    $profil = getprofilID($id);
+    return $profil;
+}
 
 function readcategoryController(){
     $categ = getcategory();
+    return $categ;
+}
+
+function readcategoryexistController(){
+    $categ = getcategoryExist();
     return $categ;
 }
 
