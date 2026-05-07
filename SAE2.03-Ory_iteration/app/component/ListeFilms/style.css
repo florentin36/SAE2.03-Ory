@@ -1,0 +1,39 @@
+.liste {
+    max-width: 100%;
+    .liste__list {
+        display: flex;
+        gap: 1rem;
+        overflow-x: scroll;
+
+        .liste__item {
+            padding-bottom: 1.4rem;
+            min-width: 10rem;
+            max-width: 10rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            div {
+                position: relative;
+                display: inline-block;
+            }
+
+            .liste__image {
+                width: 10rem;
+                border-radius: 10px;
+                aspect-ratio: 3/4;
+                display: block;
+            }
+
+            .liste__titre-film {
+                max-width: 100%;
+                margin-bottom: -0.5rem;
+                padding: 0.8rem 0;
+                font-size: 1rem;
+                overflow: hidden;
+                color: var(--color-black);
+            }
+
+        }
+    }
+}

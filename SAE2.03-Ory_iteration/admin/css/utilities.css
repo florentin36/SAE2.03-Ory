@@ -1,0 +1,11 @@
+.font-sans {
+  font-family: var(--ff-sans);
+}
+
+.font-mono {
+  font-family: Courier, monospace;
+}
+
+#form{
+  display: flex;
+}

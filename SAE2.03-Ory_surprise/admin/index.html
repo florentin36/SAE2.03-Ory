@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>SAE2.03 ADMIN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/base.css" />
+  </head>
+  <body>
+    <section id="log"></section>
+    <section id="form"></section>
+
+    <script type="module">
+      import { DataMovie } from "./data/dataMovie.js";
+      import { DataProfils } from "./data/dataProfils.js";
+
+      import { Log } from "./component/Log/script.js";
+      import { MovieForm } from "./component/MovieForm/script.js";
+      import { ProfilsForm } from "./component/ProfilsForm/script.js";
+      import { ProfilsUpdateForm } from "./component/ProfilsUpdateForm/script.js";
+
+      window.C = {};
+
+      C.handlerAjout = async function(){
+            
+          let form = document.querySelector('.MovieForm__formulaire');
+          
+          //pour pas que ca s'actualise quan je clique sur le bouton poir ajouter
+          form.addEventListener("submit", function(e) {e.preventDefault();});
+
+          let fd = new FormData(form);
+          let res = await DataMovie.ajout(fd);
+          V.renderLog(res);
+      }
+
+      C.handlerAjoutProfil = async function(){
+          let form = document.querySelector('.ProfilsForm__formulaire');
+          //pour pas que ca s'actualise quan je clique sur le bouton poir ajouter
+          form.addEventListener("submit", function(e) {e.preventDefault();});
+          let fd = new FormData(form);
+          let res = await DataProfils.ajoutProfil(fd);
+          V.renderLog(res);
+      }
+
+      C.handlerUpdateProfil = async function(){
+          let form = document.querySelector('.ProfilsUpdateForm__formulaire');
+          form.addEventListener("submit", function(e) {e.preventDefault();});
+          let fd = new FormData(form);
+          let res = await DataProfils.updateProfil(fd);
+          V.renderLog(res);
+      }
+
+      C.start = async function () {
+        let data = await DataMovie.requestCategory();
+
+        V.renderLog("Démarrage de l'application");
+        V.renderMovieForm("C.handlerAjout()",data);
+        V.renderProfilsForm("C.handlerAjoutProfil()");
+        V.renderProfilsUpdateForm("C.handlerUpdateProfil()");
+      };
+
+      window.V = {};
+
+      V.renderLog = function (txt) {
+        let content = document.querySelector("#log");
+        content.innerHTML = Log.format(txt);
+      };
+
+      V.renderMovieForm = function (handler,data) {
+        let content = document.querySelector("#form");
+        content.innerHTML += MovieForm.formatMany(handler,data);
+      };
+
+      V.renderProfilsForm = function (handler) {
+        let content = document.querySelector("#form");
+        content.innerHTML += ProfilsForm.format(handler);
+      };
+
+      V.renderProfilsUpdateForm = async function (handler) {
+        let data = await DataProfils.requestProfils();
+        let content = document.querySelector("#form");
+        content.innerHTML += ProfilsUpdateForm.formatMany(handler,data);
+      };
+
+      C.start();
+    </script>
+  </body>
+</html>

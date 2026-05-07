@@ -1,0 +1,61 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 6rem;
+  color: var(--color-fg);
+  background-color: var(--color-verydark-blue);
+  font-weight:500;
+
+  .navbar__logo{
+    max-width: 6rem;
+  }
+
+  .navbar__profilContainer{
+    padding: 0.8rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    .navbar__imageProfil{
+      width: 100%;
+    }
+    &:hover {
+      background-color: var(--color-blue);
+      border-radius: 5px;
+      transition: 0.3s ease-in-out;
+
+    }
+  }
+  .navbar__left{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .navbar__list{
+      display: flex;
+
+      .navbar__item {
+        padding: 0.8rem 1rem;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        img{
+          width: 1rem;
+        }
+        
+        &:hover {
+          background-color: var(--color-blue);
+          border-radius: 5px;
+          transition: 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+  
+  
+}

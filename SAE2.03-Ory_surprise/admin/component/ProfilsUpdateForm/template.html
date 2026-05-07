@@ -1,0 +1,29 @@
+<div class="ProfilsUpdateForm font-sans">
+    <h2 class="ProfilsUpdateForm__title">Modifier un profil</h2>
+    <form class="ProfilsUpdateForm__formulaire" method="post">
+        <div class="ProfilsUpdateForm__item">
+            <label for="id">Choix du profil</label>
+            <select class="ProfilsUpdateForm__champ" name="id" required>
+                {{listProfil}}
+            </select>
+        </div>
+
+        <div class="ProfilsUpdateForm__item">
+            <label for="nom">Nom du profil :</label>
+            <input class="ProfilsUpdateForm__champ" type="text" name="nom" required>
+        </div>
+
+        <div class="ProfilsUpdateForm__item">
+            <label for="image">Nom du fichier de la photo de profil :</label>
+            <input class="ProfilsUpdateForm__champ" type="text" name="image" required>
+        </div>
+
+        <div class="ProfilsUpdateForm__item">
+            <label for="age">Age :</label>
+            <input class="ProfilsUpdateForm__champ" type="number" name="age" required>
+        </div>
+
+
+        <input onclick="{{handler}}" type="submit" value="MODIFIER" name="todo">
+    </form>
+</div>
