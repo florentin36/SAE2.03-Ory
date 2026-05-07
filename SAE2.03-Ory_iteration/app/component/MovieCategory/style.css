@@ -1,0 +1,24 @@
+.MovieCategory{
+    max-width: 100%;
+    padding: 1rem;
+    background-color: var(--color-darkblue);
+    .MovieCategory__liste-container{
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        gap: 5rem;
+        .MovieCategory__item{
+            max-width: 100%;
+            .MovieCategory__nom{
+                font-size: 1.5rem;
+            }
+            .MovieCategory__liste{
+                display: flex;
+                align-items: center;
+                .indisponible{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}

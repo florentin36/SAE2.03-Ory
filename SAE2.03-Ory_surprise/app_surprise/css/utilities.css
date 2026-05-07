@@ -1,0 +1,9 @@
+.font-sans {
+  font-family: var(--ff-sans);
+}
+
+body{
+  background-color: var(--color-darkblue);
+  color: var(--color-white);
+}
+

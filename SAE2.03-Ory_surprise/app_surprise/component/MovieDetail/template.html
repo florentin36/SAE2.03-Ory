@@ -1,0 +1,15 @@
+<div class="MovieDetail font-sans">
+    <div class="MovieDetailHero"></div>
+    <div class="MovieDetail__container">
+        <img class="MovieDetail__image" src="/~ory3/SAE2.03-Ory/SAE2.03-Ory_surprise/server/images/{{image}}" alt="image">
+        <div class="MovieDetail__desc-container">
+            <H3 class="MovieDetail__titre">{{titre}}</H3>
+            <div class="MovieDetail__info-divers">
+                <img class="MovieDetail__favori" onclick="{{handler}}" src="/~ory3/SAE2.03-Ory/SAE2.03-Ory_surprise/server/icon/{{coeur}}" alt="favori">
+                <p>{{date}} • {{length}} minutes • {{categorie}} • {{realisateur}} • age : {{age}}</p>
+            </div>
+            <p class="MovieDetail__synopsis">{{synopsis}}</p>
+        </div>
+    </div>
+    <iframe class="MovieDetail__iframe" width="560" height="315" src="{{url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
